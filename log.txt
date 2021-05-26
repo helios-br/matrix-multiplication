@@ -1,0 +1,11 @@
+fileName: instance10-1.in
+
+-- Instance data --
+k_max: 10
+numberOfMatrixes: 1
+range: 1 .. 100
+
+# Processing...
+
+
+Done! time: 8.1285 seconds 
