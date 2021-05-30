@@ -20,7 +20,7 @@ clean:
 compile: clean
 	@echo "Compiling application..."
 	@mkdir output
-	g++ -Wall -g $(SOURCES) -o $(OUTPUT_DIR)/$(APPLICATION_NAME)
+	g++ -Wall -fopenmp -g $(SOURCES) -o $(OUTPUT_DIR)/$(APPLICATION_NAME)
 	@echo "# Done!"
 
 build: compile

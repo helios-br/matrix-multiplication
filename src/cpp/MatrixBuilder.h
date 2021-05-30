@@ -22,13 +22,13 @@ inline short **createPopulatedMatrix(int matrixOrder, int minValue, int maxValue
 
 inline short **createEmptyMatrix(int order)
 {
-  short **matrix = new short *[order];
-  for (int i = 0; i < order; i++)
-    matrix[i] = new short[order];
-  return matrix;
+	short **matrix = new short *[order];
+	for (int i = 0; i < order; i++)
+		matrix[i] = new short[order];
+	return matrix;
 }
 
-inline void populateMatrix(short** matrix, int matrixOrder, int minValue, int maxValue)
+inline void populateMatrix(short **matrix, int matrixOrder, int minValue, int maxValue)
 {
 	for (int i = 0; i < matrixOrder; i++)
 		for (int j = 0; j < matrixOrder; j++)

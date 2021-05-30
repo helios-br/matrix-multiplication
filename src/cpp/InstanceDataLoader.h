@@ -9,6 +9,9 @@ class InstanceDataLoader {
 
 	public: 
 		InstanceData loadInstance(char *);
+
+	private:
+		string normalizeFileName(char *);
 };
 
 #endif
