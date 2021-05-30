@@ -38,9 +38,7 @@ inline void populateMatrix(short **matrix, int matrixOrder, int minValue, int ma
 inline void deleteMatrix(short **matrix, int matrixOrder)
 {
 	for (int i = 0; i < matrixOrder; i++)
-	{
 		delete[] matrix[i];
-	}
 	delete[] matrix;
 }
 
@@ -57,6 +55,17 @@ inline void printMatrix(short **matrix, int matrixOrder)
 		fprintf(stderr, "]\n");
 	}
 	fprintf(stderr, "\n");
+}
+
+inline void printMatrixElementsSm(short **matrix, int matrixOrder)
+{
+	int total = 0;
+
+	for (int i = 0; i < matrixOrder; i++)
+		for (int j = 0; j < matrixOrder; j++)
+			total += matrix[i][j];
+			
+	fprintf(stderr, "%5d\n", total);
 }
 
 #endif

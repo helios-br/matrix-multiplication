@@ -8,7 +8,6 @@ using namespace std;
 
 short **BasicAlgorithm::multiply(short **firstMatrix, short **secondMatrix, int order)
 {
-
 	short **resultMatrix = createEmptyMatrix(order);
 
 	for (short i = 0; i < order; i++)

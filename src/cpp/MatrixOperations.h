@@ -3,7 +3,7 @@
 
 #include "MatrixBuilder.h"
 
-inline short **add(short **firstMatrix, short **secondMatrix, int order)
+inline short** add(short **firstMatrix, short **secondMatrix, short order)
 {
 	short **resultMatrix = createEmptyMatrix(order);
 
@@ -14,10 +14,28 @@ inline short **add(short **firstMatrix, short **secondMatrix, int order)
 	return resultMatrix;
 }
 
-inline short **subtract(short **firstMatrix, short **secondMatrix, int order)
+inline short** add(short **firstMatrix, short **secondMatrix, short order, short **resultMatrix)
+{
+	for (short i = 0; i < order; i++)
+		for (short j = 0; j < order; j++)
+			resultMatrix[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+
+	return resultMatrix;
+}
+
+inline short **subtract(short **firstMatrix, short **secondMatrix, short order)
 {
 	short **resultMatrix = createEmptyMatrix(order);
 
+	for (short i = 0; i < order; i++)
+		for (short j = 0; j < order; j++)
+			resultMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
+
+	return resultMatrix;
+}
+
+inline short **subtract(short **firstMatrix, short **secondMatrix, short order, short **resultMatrix)
+{
 	for (short i = 0; i < order; i++)
 		for (short j = 0; j < order; j++)
 			resultMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];

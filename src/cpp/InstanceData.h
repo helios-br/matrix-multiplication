@@ -15,7 +15,7 @@ struct InstanceData
 	void print()
 	{
 		cout << endl;
-		cout << "-- Instance data --" << endl;
+		cout << "---- Instance data ----" << endl;
 		cout << "k_max: " << kMax << endl;
 		cout << "numberOfMatrixes: " << this->numberOfMatrixes << endl;
 		cout << "range: " << this->minElementValue << " .. " << this->maxElementValue << endl;
