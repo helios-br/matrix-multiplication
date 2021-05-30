@@ -3,6 +3,7 @@
 
 #include "MatrixMultiplication.h"
 #include "BasicAlgorithm.h"
+#include <vector>
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class StrassenAlgorithm : public MatrixMultiplication
 		{
 			delete this->basicMultiplication;
 		}
-		short **multiply(short **firstMatrix, short **secondMatrix, int order);
+		vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
 
 	private:
 		MatrixMultiplication *basicMultiplication;

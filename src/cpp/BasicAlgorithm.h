@@ -2,13 +2,14 @@
 #define BASIC_ALGORITHM_H
 
 #include "MatrixMultiplication.h"
+#include <vector>
 
 class BasicAlgorithm : public MatrixMultiplication
 {
     public:
         BasicAlgorithm() {}
         ~BasicAlgorithm() {}
-        short **multiply(short **firstMatrix, short **secondMatrix, int order);
+        vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
 };
 
 #endif

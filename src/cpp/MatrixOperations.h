@@ -2,45 +2,37 @@
 #define MATRIX_OPERATIONS_H
 
 #include "MatrixBuilder.h"
+#include <vector>
 
-inline short** add(short **firstMatrix, short **secondMatrix, short order)
+inline vector<vector<int>> add(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order)
 {
-	short **resultMatrix = createEmptyMatrix(order);
+	vector<vector<int>> resultMatrix = createEmptyMatrix(order);
 
-	for (short i = 0; i < order; i++)
-		for (short j = 0; j < order; j++)
+	for (int i = 0; i < order; i++)
+		for (int j = 0; j < order; j++)
 			resultMatrix[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
 
 	return resultMatrix;
 }
 
-inline short** add(short **firstMatrix, short **secondMatrix, short order, short **resultMatrix)
+inline vector<vector<int>> subtract(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order)
 {
-	for (short i = 0; i < order; i++)
-		for (short j = 0; j < order; j++)
-			resultMatrix[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+	vector<vector<int>> resultMatrix = createEmptyMatrix(order);
 
-	return resultMatrix;
-}
-
-inline short **subtract(short **firstMatrix, short **secondMatrix, short order)
-{
-	short **resultMatrix = createEmptyMatrix(order);
-
-	for (short i = 0; i < order; i++)
-		for (short j = 0; j < order; j++)
+	for (int i = 0; i < order; i++)
+		for (int j = 0; j < order; j++)
 			resultMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
 
 	return resultMatrix;
 }
 
-inline short **subtract(short **firstMatrix, short **secondMatrix, short order, short **resultMatrix)
+inline unsigned long long sumAllElements(vector<vector<int>> matrix, int order)
 {
-	for (short i = 0; i < order; i++)
-		for (short j = 0; j < order; j++)
-			resultMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
-
-	return resultMatrix;
+	unsigned long long total = 0;
+	for (int i = 0; i < order; i++)
+		for (int j = 0; j < order; j++)
+			total += matrix[i][j];
+	return total;
 }
 
 #endif

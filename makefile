@@ -8,10 +8,12 @@ OUTPUT_DIR = ./output
 RUN = run.sh
 
 # OPTIONS
+# g++ -Wall -fopenmp -g $(SOURCES) -o $(OUTPUT_DIR)/$(APPLICATION_NAME)
 
 all: build
 
 clean:
+	@clear
 	@echo "Cleaning..."
 	@rm -rf output
 	@rm -rf $(RUN)
@@ -20,7 +22,7 @@ clean:
 compile: clean
 	@echo "Compiling application..."
 	@mkdir output	
-	g++ -Wall -fopenmp -g $(SOURCES) -o $(OUTPUT_DIR)/$(APPLICATION_NAME)
+	g++ -Wall -g $(SOURCES) -o $(OUTPUT_DIR)/$(APPLICATION_NAME)
 	@echo "# Done!"
 
 build: compile

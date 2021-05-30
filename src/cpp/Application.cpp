@@ -8,6 +8,7 @@
 #include "BasicAlgorithm.h"
 #include "MatrixBuilder.h"
 #include "StrassenAlgorithm.h"
+#include <vector>
 
 using namespace std;
 
@@ -43,50 +44,56 @@ int main(int argc, char **argv)
 
 	// Execution
 
-	int initialK = 3;
+	int initialK = 1;
 	int totalProcessingKs = instanceData.kMax - initialK + 1;
+	
 	float basicAlgorithmTime[totalProcessingKs];
-	float strassenAlgorithmTime[totalProcessingKs];
+	float strassenAlgorithmTime[totalProcessingKs];	
 
-	MatrixMultiplication *basicMultiplication = new BasicAlgorithm();
+	// Basic execution 
+
+	//cout << endl;
+	//cout << "@@@@@@ BASIC EXECUTION" << endl;
+	
+	MatrixMultiplication *basicMultiplication = new BasicAlgorithm();	
 	MatrixMultiplication *strassenMultiplication = new StrassenAlgorithm();
 
 	for (int k = initialK, index = 0; k <= instanceData.kMax; k++, index++)
-	{
+	{		
 		int matrixOrder = pow(2, k);
 		float totalBasicAlgorithmTimeForK = 0;
 		float totalStrassenAlgorithmTimeForK = 0;
+
+		cout << "\n##### New configuration. k = " << k << ", matrix order = " << matrixOrder << endl;
 
 		for (int i = 0; i < instanceData.numberOfMatrixes; i++)
 		{
 			cout << endl;
 			cout << "# New matrices created" << endl;
-			short **matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			printMatrix(matrix1, matrixOrder);
-			short **matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			printMatrix(matrix2, matrixOrder);
+			vector<vector<int>> matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
+			//printMatrix(matrix1, matrixOrder);
+			vector<vector<int>> matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
+			//printMatrix(matrix2, matrixOrder);
 
 			// Basic algorithm
 
 			auto startTime = std::chrono::high_resolution_clock::now();
-			short **resultMatrix = basicMultiplication->multiply(matrix1, matrix2, matrixOrder);
+			vector<vector<int>> resultMatrix = basicMultiplication->multiply(matrix1, matrix2, matrixOrder);
 			auto endTime = std::chrono::high_resolution_clock::now();
 			auto duration = (std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count());
 			float time = (float)duration / 1000000;
 			totalBasicAlgorithmTimeForK += time;
-			fprintf(stderr, "Basic algorithm result:\n");
-			printMatrixElementsSm(resultMatrix, matrixOrder);
+			printMatrixElementsSum(resultMatrix, matrixOrder);
 
 			// Strassen algorithm
 
 			auto startStrassenTime = std::chrono::high_resolution_clock::now();
-			short **resultStrassenMatrix = strassenMultiplication->multiply(matrix1, matrix2, matrixOrder);
+			vector<vector<int>> resultStrassenMatrix = strassenMultiplication->multiply(matrix1, matrix2, matrixOrder);
 			auto endStrassenTime = std::chrono::high_resolution_clock::now();
 			auto strassenDuration = (std::chrono::duration_cast<std::chrono::microseconds>(endStrassenTime - startStrassenTime).count());
 			float strassenTime = (float)strassenDuration / 1000000;
 			totalStrassenAlgorithmTimeForK += strassenTime;
-			fprintf(stderr, "Strassen algorithm result:\n");
-			printMatrixElementsSm(resultStrassenMatrix, matrixOrder);
+			printMatrixElementsSum(resultStrassenMatrix, matrixOrder);
 
 			// Free memory
 
@@ -100,6 +107,11 @@ int main(int argc, char **argv)
 		strassenAlgorithmTime[index] = totalStrassenAlgorithmTimeForK / totalProcessingKs;
 	}
 
+	delete basicMultiplication;
+	delete strassenMultiplication;
+
+	// Output results
+
 	cout << endl;
 	cout << "---- Processing time ----" << endl;
 	cout << std::fixed << std::setprecision(10);
@@ -112,10 +124,5 @@ int main(int argc, char **argv)
 		cout << "Strassen: " << strassenAlgorithmTime[index] << " seconds" << endl;
 	}
 
-	cout << "Done!" << endl;
-
-	// Free memory
-
-	delete basicMultiplication;
-	delete strassenMultiplication;
+	cout << "Done!" << endl;	
 }

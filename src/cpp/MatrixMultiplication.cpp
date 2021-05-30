@@ -20,9 +20,9 @@ void MatrixMultiplication::execute(InstanceData instanceData)
 		{
 			fprintf(stderr, "\n@ New multiplication\n");
 
-			short **matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			short **matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			short **resultMatrix = this->multiply(matrix1, matrix2, matrixOrder);
+			vector<vector<int>> matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
+			vector<vector<int>> matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
+			vector<vector<int>> resultMatrix = this->multiply(matrix1, matrix2, matrixOrder);
 
 			// Output data
 			

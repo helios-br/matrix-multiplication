@@ -2,6 +2,7 @@
 #define MATRIX_MULTIPLICATION_H
 
 #include "InstanceData.h"
+#include <vector>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ class MatrixMultiplication
         MatrixMultiplication() {}
         virtual ~MatrixMultiplication() {}
         void execute(InstanceData instanceData);
-        virtual short **multiply(short **firstMatrix, short **secondMatrix, int order) = 0;
+        virtual vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order) = 0;
 };
 
 #endif
