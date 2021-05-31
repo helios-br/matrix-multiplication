@@ -29,12 +29,6 @@ void MatrixMultiplication::execute(InstanceData instanceData)
 			printMatrix(matrix1, matrixOrder);
 			printMatrix(matrix2, matrixOrder);
 			printMatrix(resultMatrix, matrixOrder);
-
-			// Free memory
-
-			deleteMatrix(matrix1, matrixOrder);
-			deleteMatrix(matrix2, matrixOrder);
-			deleteMatrix(resultMatrix, matrixOrder);
 		}
 	}
 

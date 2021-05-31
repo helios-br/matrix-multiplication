@@ -67,9 +67,9 @@ int main(int argc, char **argv)
 			cout << endl;
 			cout << "# New matrices created" << endl;
 			vector<vector<int>> matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			//printMatrix(matrix1, matrixOrder);
+			printMatrix(matrix1, matrixOrder);
 			vector<vector<int>> matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			//printMatrix(matrix2, matrixOrder);
+			printMatrix(matrix2, matrixOrder);
 
 			// Naive algorithm
 
@@ -117,21 +117,19 @@ int main(int argc, char **argv)
 	cout << "Done!" << endl;
 
 	// Gnuplot
-	/*Gnuplot g1("teste");
-	g1.plot_x(naiveAlgorithmTime, "pontos");
-	g1.set_smooth().plot_x(naiveAlgorithmTime, "cspline");
-	g1.set_smooth("bezier").plot_x(naiveAlgorithmTime, "bezier");*/
 
-	Gnuplot g2("teste2");
-	g2.set_grid();
-	g2.set_xlabel("K value");
-	g2.set_ylabel("Time (seconds)");
-	g2.set_xrange(0, 10);
-	//g2.set_yrange(0, strassenAlgorithmTime[strassenAlgorithmTime.size() - 1]);
-	g2.set_style("").plot_xy(kValues, naiveAlgorithmTime, "naive");
-	g2.set_style("lines rgb 'red'").plot_xy(kValues, naiveAlgorithmTime, "naive");
-	g2.set_style("").plot_xy(kValues, strassenAlgorithmTime, "strassen");
-	g2.set_style("lines rgb 'blue'").plot_xy(kValues, strassenAlgorithmTime, "strassen");
+	Gnuplot g1("teste2");
+	g1.set_grid();
+	g1.set_xlabel("K value");
+	g1.set_ylabel("Time (seconds)");	
+	g1.set_yautoscale();
+	g1.set_xautoscale();
+	//g1.set_yrange(0, strassenAlgorithmTime[strassenAlgorithmTime.size() - 1]);
+	//g1.set_xrange(0, 10);
+	g1.set_style("").plot_xy(kValues, naiveAlgorithmTime, "naive");
+	g1.set_style("lines").plot_xy(kValues, naiveAlgorithmTime, "naive");
+	g1.set_style("").plot_xy(kValues, strassenAlgorithmTime, "strassen");
+	g1.set_style("lines").plot_xy(kValues, strassenAlgorithmTime, "strassen");
 
 	waitForKey();
 }
