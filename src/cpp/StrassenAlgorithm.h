@@ -2,7 +2,7 @@
 #define STRASSEN_ALGORITHM_H
 
 #include "MatrixMultiplication.h"
-#include "BasicAlgorithm.h"
+#include "NaiveAlgorithm.h"
 #include <vector>
 
 using namespace std;
@@ -12,16 +12,16 @@ class StrassenAlgorithm : public MatrixMultiplication
 	public:
 		StrassenAlgorithm()
 		{
-			this->basicMultiplication = new BasicAlgorithm();
+			this->naiveMultiplication = new NaiveAlgorithm();
 		}
 		~StrassenAlgorithm()
 		{
-			delete this->basicMultiplication;
+			delete this->naiveMultiplication;
 		}
 		vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
 
 	private:
-		MatrixMultiplication *basicMultiplication;
+		MatrixMultiplication *naiveMultiplication;
 };
 
 #endif

@@ -1,14 +1,14 @@
-#ifndef BASIC_ALGORITHM_H
-#define BASIC_ALGORITHM_H
+#ifndef NAIVE_ALGORITHM_H
+#define NAIVE_ALGORITHM_H
 
 #include "MatrixMultiplication.h"
 #include <vector>
 
-class BasicAlgorithm : public MatrixMultiplication
+class NaiveAlgorithm : public MatrixMultiplication
 {
     public:
-        BasicAlgorithm() {}
-        ~BasicAlgorithm() {}
+        NaiveAlgorithm() {}
+        ~NaiveAlgorithm() {}
         vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
 };
 
