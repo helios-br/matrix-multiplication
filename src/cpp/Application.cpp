@@ -8,6 +8,7 @@
 #include "NaiveAlgorithm.h"
 #include "MatrixBuilder.h"
 #include "StrassenAlgorithm.h"
+#include "Gnuplot.h"
 #include <vector>
 
 using namespace std;
@@ -45,16 +46,16 @@ int main(int argc, char **argv)
 	// Execution
 
 	int initialK = 1;
-	
+
 	vector<int> kValues;
 	vector<float> naiveAlgorithmTime;
-	vector<float> strassenAlgorithmTime;	
-	
-	MatrixMultiplication *naiveMultiplication = new NaiveAlgorithm();	
+	vector<float> strassenAlgorithmTime;
+
+	MatrixMultiplication *naiveMultiplication = new NaiveAlgorithm();
 	MatrixMultiplication *strassenMultiplication = new StrassenAlgorithm();
 
 	for (int k = initialK, index = 0; k <= instanceData.kMax; k++, index++)
-	{		
+	{
 		int matrixOrder = pow(2, k);
 		float totalNaiveAlgorithmTimeForK = 0;
 		float totalStrassenAlgorithmTimeForK = 0;
@@ -113,9 +114,26 @@ int main(int argc, char **argv)
 		cout << "Strassen: " << strassenAlgorithmTime[index] << " seconds" << endl;
 	}
 
-	cout << "Done!" << endl;	
+	cout << "Done!" << endl;
 
 	// Gnuplot
+	/*Gnuplot g1("teste");
+	g1.plot_x(naiveAlgorithmTime, "pontos");
+	g1.set_smooth().plot_x(naiveAlgorithmTime, "cspline");
+	g1.set_smooth("bezier").plot_x(naiveAlgorithmTime, "bezier");*/
 
-	
+	Gnuplot g2("teste2");
+	g2.set_grid();
+	g2.set_xlabel("K value");
+	g2.set_ylabel("Time (seconds)");
+	g2.set_xrange(0, 10);
+	//g2.set_yrange(0, strassenAlgorithmTime[strassenAlgorithmTime.size() - 1]);
+	g2.set_style("").plot_xy(kValues, naiveAlgorithmTime, "naive");
+	g2.set_style("lines rgb 'red'").plot_xy(kValues, naiveAlgorithmTime, "naive");
+	g2.set_style("").plot_xy(kValues, strassenAlgorithmTime, "strassen");
+	g2.set_style("lines rgb 'blue'").plot_xy(kValues, strassenAlgorithmTime, "strassen");
+
+	waitForKey();
 }
+
+
