@@ -185,18 +185,18 @@ vector<vector<int>> StrassenAlgorithm::multiply(vector<vector<int>> &matrixA, ve
 
 			a11[i][j] = matrixA[i][j];
 			a22[i][j] = matrixA[newOrderPlusI][newOrderPlusJ];
-			b11[i][j] = matrixB[i][j];
-			b22[i][j] = matrixB[newOrderPlusI][newOrderPlusJ];
-
-			s1[i][j] = matrixB[i][newOrderPlusJ] - matrixB[newOrderPlusI][newOrderPlusJ];
 			s2[i][j] = matrixA[i][j] + matrixA[i][newOrderPlusJ];
 			s3[i][j] = matrixA[newOrderPlusI][j] + matrixA[newOrderPlusI][newOrderPlusJ];
-			s4[i][j] = matrixB[newOrderPlusI][j] - matrixB[i][j];
 			s5[i][j] = matrixA[i][j] + matrixA[newOrderPlusI][newOrderPlusJ];
-			s6[i][j] = matrixB[i][j] + matrixB[newOrderPlusI][newOrderPlusJ];
 			s7[i][j] = matrixA[i][newOrderPlusJ] - matrixA[newOrderPlusI][newOrderPlusJ];
-			s8[i][j] = matrixB[newOrderPlusI][j] + matrixB[newOrderPlusI][newOrderPlusJ];
 			s9[i][j] = matrixA[i][j] - matrixA[newOrderPlusI][j];
+
+			b11[i][j] = matrixB[i][j];
+			b22[i][j] = matrixB[newOrderPlusI][newOrderPlusJ];
+			s1[i][j] = matrixB[i][newOrderPlusJ] - matrixB[newOrderPlusI][newOrderPlusJ];
+			s4[i][j] = matrixB[newOrderPlusI][j] - matrixB[i][j];
+			s6[i][j] = matrixB[i][j] + matrixB[newOrderPlusI][newOrderPlusJ];
+			s8[i][j] = matrixB[newOrderPlusI][j] + matrixB[newOrderPlusI][newOrderPlusJ];
 			s10[i][j] = matrixB[i][j] + matrixB[i][newOrderPlusJ];
 		}
 	}
