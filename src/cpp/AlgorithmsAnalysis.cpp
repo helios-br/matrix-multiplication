@@ -52,7 +52,7 @@ void executeAnalysis(InstanceData instanceData)
 			vector<vector<int>> resultMatrix = naiveMultiplication->multiply(matrix1, matrix2, matrixOrder);
 			auto endTime = std::chrono::high_resolution_clock::now();
 			auto duration = (std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count());
-			float time = (float)duration / 1000000;			
+			float time = (float)duration / 1000000;
 			totalNaiveAlgorithmTimeForK += time;
 			cout << "Naive algorithm [" << i << "]: " << time << " seconds" << endl;
 			//printMatrixElementsSum(resultMatrix, matrixOrder);

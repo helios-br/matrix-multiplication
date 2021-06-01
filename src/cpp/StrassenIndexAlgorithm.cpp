@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 vector<vector<int>> StrassenIndexAlgorithm::multiply(vector<vector<int>> &matrixA, vector<vector<int>> &matrixB, int order)
 {
 	return multiply(matrixA, 0, 0, matrixB, 0, 0, order);
@@ -35,7 +34,7 @@ vector<vector<int>> StrassenIndexAlgorithm::multiply(vector<vector<int>> &matrix
 	//b11 matrixB, bi, bj,
 	//b12 matrixB, bi, bj + newOrder,
 	//b21 matrixB, bi + newOrder, bj,
-	//b22 matrixB, bi + newOrder, bj + newOrder,	
+	//b22 matrixB, bi + newOrder, bj + newOrder,
 
 	//a11[i][j] = matrixA[i][j];
 	//a12[i][j] = matrixA[i][newOrder + j];

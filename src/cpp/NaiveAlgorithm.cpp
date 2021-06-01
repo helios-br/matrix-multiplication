@@ -6,9 +6,9 @@
 
 using namespace std;
 
-vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>>& matrixA, vector<vector<int>>& matrixB, int order)
+vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>> &matrixA, vector<vector<int>> &matrixB, int order)
 {
-	vector<vector<int>> resultMatrix (order, vector<int>(order));
+	vector<vector<int>> resultMatrix(order, vector<int>(order));
 
 	int i, j, k;
 
@@ -21,9 +21,9 @@ vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>>& matrixA, vecto
 	return resultMatrix;
 };
 
-vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>>& matrixA, int ai, int aj, vector<vector<int>>& matrixB, int bi, short bj, int order)
+vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>> &matrixA, int ai, int aj, vector<vector<int>> &matrixB, int bi, short bj, int order)
 {
-	vector<vector<int>> resultMatrix (order, vector<int>(order));
+	vector<vector<int>> resultMatrix(order, vector<int>(order));
 
 	int i, j, k;
 

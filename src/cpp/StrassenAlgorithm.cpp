@@ -28,31 +28,31 @@ vector<vector<int>> StrassenAlgorithm::multiply(vector<vector<int>> &matrixA, ve
 	//b21 matrixB, newOrder, 0
 	//b22 matrixB, newOrder, newOrder
 
-	vector<vector<int>> a11 (newOrder, vector<int>(newOrder));
-	vector<vector<int>> a22 (newOrder, vector<int>(newOrder));
-	vector<vector<int>> b22 (newOrder, vector<int>(newOrder));
-	vector<vector<int>> b11 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> a11(newOrder, vector<int>(newOrder));
+	vector<vector<int>> a22(newOrder, vector<int>(newOrder));
+	vector<vector<int>> b22(newOrder, vector<int>(newOrder));
+	vector<vector<int>> b11(newOrder, vector<int>(newOrder));
 
 	// b12 - b22
-	vector<vector<int>> s1 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s1(newOrder, vector<int>(newOrder));
 	// a11 + a12
-	vector<vector<int>> s2 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s2(newOrder, vector<int>(newOrder));
 	//  a21 + a22
-	vector<vector<int>> s3 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s3(newOrder, vector<int>(newOrder));
 	// b21 - b11
-	vector<vector<int>> s4 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s4(newOrder, vector<int>(newOrder));
 	// a11 + a22
-	vector<vector<int>> s5 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s5(newOrder, vector<int>(newOrder));
 	// b11 + b22
-	vector<vector<int>> s6 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s6(newOrder, vector<int>(newOrder));
 	// a12 - a22
-	vector<vector<int>> s7 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s7(newOrder, vector<int>(newOrder));
 	// b21 + b22
-	vector<vector<int>> s8 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s8(newOrder, vector<int>(newOrder));
 	// a11 - a21
-	vector<vector<int>> s9 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s9(newOrder, vector<int>(newOrder));
 	// b11 + b12
-	vector<vector<int>> s10 (newOrder, vector<int>(newOrder));
+	vector<vector<int>> s10(newOrder, vector<int>(newOrder));
 
 	//a11[i][j] = matrixA[i][j];
 	//a12[i][j] = matrixA[i][newOrder + j];
@@ -63,8 +63,10 @@ vector<vector<int>> StrassenAlgorithm::multiply(vector<vector<int>> &matrixA, ve
 	//b21[i][j] = matrixB[newOrder + i][j];
 	//b22[i][j] = matrixB[newOrder + i][newOrder + j];
 
-	for (int i = 0; i < newOrder; i++) {
-		for (int j = 0; j < newOrder; j++) {
+	for (int i = 0; i < newOrder; i++)
+	{
+		for (int j = 0; j < newOrder; j++)
+		{
 			int newOrderPlusI = newOrder + i;
 			int newOrderPlusJ = newOrder + j;
 
@@ -109,11 +111,11 @@ vector<vector<int>> StrassenAlgorithm::multiply(vector<vector<int>> &matrixA, ve
 
 	// Result matrix calculation (loops merged)
 
-	vector<vector<int>> resultMatrix (order, vector<int>(order));
+	vector<vector<int>> resultMatrix(order, vector<int>(order));
 
-	for (int i = 0; i < newOrder; i++) 
+	for (int i = 0; i < newOrder; i++)
 	{
-		for (int j = 0; j < newOrder; j++) 
+		for (int j = 0; j < newOrder; j++)
 		{
 			resultMatrix[i][j] = p5[i][j] + p4[i][j] - p2[i][j] + p6[i][j];
 			resultMatrix[i][j + newOrder] = p1[i][j] + p2[i][j];

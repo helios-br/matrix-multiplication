@@ -9,7 +9,7 @@ using namespace std;
 
 inline vector<vector<int>> createPopulatedMatrix(int matrixOrder, int minValue, int maxValue)
 {
-	vector<vector<int>> matrix (matrixOrder, vector<int>(matrixOrder));
+	vector<vector<int>> matrix(matrixOrder, vector<int>(matrixOrder));
 
 	for (int i = 0; i < matrixOrder; i++)
 		for (int j = 0; j < matrixOrder; j++)
@@ -19,11 +19,11 @@ inline vector<vector<int>> createPopulatedMatrix(int matrixOrder, int minValue, 
 
 inline vector<vector<int>> createEmptyMatrix(int order)
 {
-	vector<vector<int>> matrix (order, vector<int>(order));
+	vector<vector<int>> matrix(order, vector<int>(order));
 	return matrix;
 }
 
-inline void printMatrix(vector<vector<int>>& matrix, int matrixOrder)
+inline void printMatrix(vector<vector<int>> &matrix, int matrixOrder)
 {
 	fprintf(stderr, "\n");
 	for (int i = 0; i < matrixOrder; i++)
@@ -38,14 +38,14 @@ inline void printMatrix(vector<vector<int>>& matrix, int matrixOrder)
 	fprintf(stderr, "\n");
 }
 
-inline void printMatrixElementsSum(vector<vector<int>>& matrix, int matrixOrder)
+inline void printMatrixElementsSum(vector<vector<int>> &matrix, int matrixOrder)
 {
 	unsigned long long total = 0;
 
 	for (int i = 0; i < matrixOrder; i++)
 		for (int j = 0; j < matrixOrder; j++)
 			total += matrix[i][j];
-			
+
 	cout << "Result: " << total << endl;
 }
 

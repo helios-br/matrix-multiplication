@@ -32,5 +32,3 @@ int main(int argc, char **argv)
 
 	executeAnalysis(instanceData);
 }
-
-
