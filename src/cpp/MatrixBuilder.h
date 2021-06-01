@@ -23,21 +23,7 @@ inline vector<vector<int>> createEmptyMatrix(int order)
 	return matrix;
 }
 
-inline void populateMatrix(vector<vector<int>> matrix, int matrixOrder, int minValue, int maxValue)
-{
-	for (int i = 0; i < matrixOrder; i++)
-		for (int j = 0; j < matrixOrder; j++)
-			matrix[i][j] = minValue + (std::rand() % (maxValue - minValue + 1));
-}
-
-inline void deleteMatrix(vector<vector<int>> matrix, int matrixOrder)
-{
-	for (int i = 0; i < matrixOrder; i++)
-		matrix[i].clear();
-	matrix.clear();
-}
-
-inline void printMatrix(vector<vector<int>> matrix, int matrixOrder)
+inline void printMatrix(vector<vector<int>>& matrix, int matrixOrder)
 {
 	fprintf(stderr, "\n");
 	for (int i = 0; i < matrixOrder; i++)
@@ -52,7 +38,7 @@ inline void printMatrix(vector<vector<int>> matrix, int matrixOrder)
 	fprintf(stderr, "\n");
 }
 
-inline void printMatrixElementsSum(vector<vector<int>> matrix, int matrixOrder)
+inline void printMatrixElementsSum(vector<vector<int>>& matrix, int matrixOrder)
 {
 	unsigned long long total = 0;
 

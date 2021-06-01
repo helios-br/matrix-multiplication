@@ -9,7 +9,7 @@ class NaiveAlgorithm : public MatrixMultiplication
     public:
         NaiveAlgorithm() {}
         ~NaiveAlgorithm() {}
-        vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
+        vector<vector<int>> multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order);
 };
 
 #endif

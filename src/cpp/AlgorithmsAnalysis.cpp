@@ -34,12 +34,12 @@ void executeAnalysis(InstanceData instanceData) {
 
 		for (int i = 0; i < instanceData.numberOfMatrixes; i++)
 		{
-			cout << endl;
-			cout << "# New matrices created" << endl;
+			//cout << endl;
+			//cout << "# New matrices created" << endl;
 			vector<vector<int>> matrix1 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			printMatrix(matrix1, matrixOrder);
+			//printMatrix(matrix1, matrixOrder);
 			vector<vector<int>> matrix2 = createPopulatedMatrix(matrixOrder, instanceData.minElementValue, instanceData.maxElementValue);
-			printMatrix(matrix2, matrixOrder);
+			//printMatrix(matrix2, matrixOrder);
 
 			// Naive algorithm
 

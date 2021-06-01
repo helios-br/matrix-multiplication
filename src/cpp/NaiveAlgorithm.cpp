@@ -6,7 +6,7 @@
 
 using namespace std;
 
-vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order)
+vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order)
 {
 	vector<vector<int>> resultMatrix (order, vector<int>(order));
 
@@ -18,7 +18,7 @@ vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>> firstMatrix, ve
 	return resultMatrix;
 };
 
-/*vector<vector<int>> NaiveAlgorithm::multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order)
+/*vector<vector<int>> multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order)
 {
 	vector<vector<int>> resultMatrix (order, vector<int>(order));
 

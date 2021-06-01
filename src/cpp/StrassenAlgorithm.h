@@ -18,10 +18,11 @@ class StrassenAlgorithm : public MatrixMultiplication
 		{
 			delete this->naiveMultiplication;
 		}
-		vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order);
+		vector<vector<int>> multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order);
 
 	private:
 		MatrixMultiplication *naiveMultiplication;
+		vector<vector<int>> multiply(vector<vector<int>>& matrixA, int ai, int aj, vector<vector<int>>& matrixB, int bi, short bj, int order);
 };
 
 #endif

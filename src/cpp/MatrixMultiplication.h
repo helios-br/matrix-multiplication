@@ -12,7 +12,7 @@ class MatrixMultiplication
         MatrixMultiplication() {}
         virtual ~MatrixMultiplication() {}
         void execute(InstanceData instanceData);
-        virtual vector<vector<int>> multiply(vector<vector<int>> firstMatrix, vector<vector<int>> secondMatrix, int order) = 0;
+        virtual vector<vector<int>> multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order) = 0;
 };
 
 #endif
