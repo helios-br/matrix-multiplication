@@ -8,27 +8,32 @@
 #include "NaiveAlgorithm.h"
 #include "MatrixBuilder.h"
 #include "StrassenAlgorithm.h"
+#include "StrassenIndexAlgorithm.h"
 #include "Gnuplot.h"
 #include <vector>
 #include "StringUtil.h"
 
-void executeAnalysis(InstanceData instanceData) {
-// Execution
+void executeAnalysis(InstanceData instanceData)
+{
+	// Execution
 
-	int initialK = 1;
+	int initialK = 5;
 
 	vector<int> orders;
 	vector<float> naiveAlgorithmTime;
 	vector<float> strassenAlgorithmTime;
+	vector<float> strassenIndexAlgorithmTime;
 
 	MatrixMultiplication *naiveMultiplication = new NaiveAlgorithm();
 	MatrixMultiplication *strassenMultiplication = new StrassenAlgorithm();
+	MatrixMultiplication *strassenIndexMultiplication = new StrassenIndexAlgorithm();
 
 	for (int k = initialK, index = 0; k <= instanceData.kMax; k++, index++)
 	{
 		int matrixOrder = pow(2, k);
 		float totalNaiveAlgorithmTimeForK = 0;
 		float totalStrassenAlgorithmTimeForK = 0;
+		float totalStrassenIndexAlgorithmTimeForK = 0;
 
 		cout << "\n##### New configuration. k = " << k << ", matrix order = " << matrixOrder << endl;
 
@@ -50,6 +55,7 @@ void executeAnalysis(InstanceData instanceData) {
 			float time = (float)duration / 1000000;
 			totalNaiveAlgorithmTimeForK += time;
 			//printMatrixElementsSum(resultMatrix, matrixOrder);
+			//printMatrix(resultMatrix, matrixOrder);
 
 			// Strassen algorithm
 
@@ -60,15 +66,29 @@ void executeAnalysis(InstanceData instanceData) {
 			float strassenTime = (float)strassenDuration / 1000000;
 			totalStrassenAlgorithmTimeForK += strassenTime;
 			//printMatrixElementsSum(resultStrassenMatrix, matrixOrder);
+			//printMatrix(resultStrassenMatrix, matrixOrder);
+
+			// Strassen algorithm with index calculations
+
+			auto startStrassenIndexTime = std::chrono::high_resolution_clock::now();
+			vector<vector<int>> resultStrassenIndexMatrix = strassenMultiplication->multiply(matrix1, matrix2, matrixOrder);
+			auto endStrassenIndexTime = std::chrono::high_resolution_clock::now();
+			auto strassenIndexDuration = (std::chrono::duration_cast<std::chrono::microseconds>(endStrassenIndexTime - startStrassenIndexTime).count());
+			float strassenIndexTime = (float)strassenIndexDuration / 1000000;
+			totalStrassenIndexAlgorithmTimeForK += strassenIndexTime;
+			//printMatrixElementsSum(resultStrassenIndexMatrix, matrixOrder);
+			//printMatrix(resultStrassenIndexMatrix, matrixOrder);
 		}
 
 		orders.push_back(matrixOrder);
 		naiveAlgorithmTime.push_back(totalNaiveAlgorithmTimeForK / instanceData.numberOfMatrixes);
 		strassenAlgorithmTime.push_back(totalStrassenAlgorithmTimeForK / instanceData.numberOfMatrixes);
+		strassenIndexAlgorithmTime.push_back(totalStrassenIndexAlgorithmTimeForK / instanceData.numberOfMatrixes);
 	}
 
 	delete naiveMultiplication;
 	delete strassenMultiplication;
+	delete strassenIndexMultiplication;
 
 	// Output results
 
@@ -82,6 +102,7 @@ void executeAnalysis(InstanceData instanceData) {
 		cout << "order = " << orders[index] << endl;
 		cout << "Naive:    " << naiveAlgorithmTime[index] << " seconds" << endl;
 		cout << "Strassen: " << strassenAlgorithmTime[index] << " seconds" << endl;
+		cout << "Strassen (index calculations): " << strassenIndexAlgorithmTime[index] << " seconds" << endl;
 	}
 
 	cout << "Done!" << endl;
@@ -91,15 +112,15 @@ void executeAnalysis(InstanceData instanceData) {
 	Gnuplot g1("Results");
 	g1.set_grid();
 	g1.set_xlabel("Matrix order");
-	g1.set_ylabel("Time (seconds)");	
+	g1.set_ylabel("Time (seconds)");
 	g1.set_yautoscale();
 	g1.set_xautoscale();
-	//g1.set_yrange(0, strassenAlgorithmTime[strassenAlgorithmTime.size() - 1]);
-	//g1.set_xrange(0, 10);
 	g1.set_style("").plot_xy(orders, naiveAlgorithmTime, "naive");
 	g1.set_style("lines").plot_xy(orders, naiveAlgorithmTime, "naive");
 	g1.set_style("").plot_xy(orders, strassenAlgorithmTime, "strassen");
 	g1.set_style("lines").plot_xy(orders, strassenAlgorithmTime, "strassen");
+	g1.set_style("").plot_xy(orders, strassenIndexAlgorithmTime, "strassen index");
+	g1.set_style("lines").plot_xy(orders, strassenIndexAlgorithmTime, "strassen index");
 
 	waitForKey();
 }

@@ -1,5 +1,5 @@
-#ifndef STRASSEN_ALGORITHM_H
-#define STRASSEN_ALGORITHM_H
+#ifndef STRASSEN_INDEX_ALGORITHM_H
+#define STRASSEN_INDEX_ALGORITHM_H
 
 #include "MatrixMultiplication.h"
 #include "NaiveAlgorithm.h"
@@ -7,14 +7,14 @@
 
 using namespace std;
 
-class StrassenAlgorithm : public MatrixMultiplication
+class StrassenIndexAlgorithm : public MatrixMultiplication
 {
 	public:
-		StrassenAlgorithm()
+		StrassenIndexAlgorithm()
 		{
 			this->naiveMultiplication = new NaiveAlgorithm();
 		}
-		~StrassenAlgorithm()
+		~StrassenIndexAlgorithm()
 		{
 			delete this->naiveMultiplication;
 		}

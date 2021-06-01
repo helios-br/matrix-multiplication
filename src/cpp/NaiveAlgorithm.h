@@ -9,7 +9,8 @@ class NaiveAlgorithm : public MatrixMultiplication
     public:
         NaiveAlgorithm() {}
         ~NaiveAlgorithm() {}
-        vector<vector<int>> multiply(vector<vector<int>>& firstMatrix, vector<vector<int>>& secondMatrix, int order);
+        vector<vector<int>> multiply(vector<vector<int>>& matrixA, vector<vector<int>>& matrixB, int order);
+        vector<vector<int>> multiply(vector<vector<int>>& matrixA, int ai, int aj, vector<vector<int>>& matrixB, int bi, short bj, int order);
 };
 
 #endif
