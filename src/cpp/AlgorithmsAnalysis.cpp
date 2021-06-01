@@ -52,8 +52,9 @@ void executeAnalysis(InstanceData instanceData)
 			vector<vector<int>> resultMatrix = naiveMultiplication->multiply(matrix1, matrix2, matrixOrder);
 			auto endTime = std::chrono::high_resolution_clock::now();
 			auto duration = (std::chrono::duration_cast<std::chrono::microseconds>(endTime - startTime).count());
-			float time = (float)duration / 1000000;
+			float time = (float)duration / 1000000;			
 			totalNaiveAlgorithmTimeForK += time;
+			cout << "Naive algorithm [" << i << "]: " << time << " seconds" << endl;
 			//printMatrixElementsSum(resultMatrix, matrixOrder);
 			//printMatrix(resultMatrix, matrixOrder);
 
@@ -65,17 +66,19 @@ void executeAnalysis(InstanceData instanceData)
 			auto strassenDuration = (std::chrono::duration_cast<std::chrono::microseconds>(endStrassenTime - startStrassenTime).count());
 			float strassenTime = (float)strassenDuration / 1000000;
 			totalStrassenAlgorithmTimeForK += strassenTime;
+			cout << "Strassen algorithm [" << i << "]: " << strassenTime << " seconds" << endl;
 			//printMatrixElementsSum(resultStrassenMatrix, matrixOrder);
 			//printMatrix(resultStrassenMatrix, matrixOrder);
 
 			// Strassen algorithm with index calculations
 
 			auto startStrassenIndexTime = std::chrono::high_resolution_clock::now();
-			vector<vector<int>> resultStrassenIndexMatrix = strassenMultiplication->multiply(matrix1, matrix2, matrixOrder);
+			vector<vector<int>> resultStrassenIndexMatrix = strassenIndexMultiplication->multiply(matrix1, matrix2, matrixOrder);
 			auto endStrassenIndexTime = std::chrono::high_resolution_clock::now();
 			auto strassenIndexDuration = (std::chrono::duration_cast<std::chrono::microseconds>(endStrassenIndexTime - startStrassenIndexTime).count());
 			float strassenIndexTime = (float)strassenIndexDuration / 1000000;
 			totalStrassenIndexAlgorithmTimeForK += strassenIndexTime;
+			cout << "Strassen algorithm (index calculation) (" << i << "): " << strassenIndexTime << " seconds" << endl;
 			//printMatrixElementsSum(resultStrassenIndexMatrix, matrixOrder);
 			//printMatrix(resultStrassenIndexMatrix, matrixOrder);
 		}
